@@ -16,11 +16,16 @@ class Answers():
             self.answer = self.answer[:number-1]
             self.answer.extend(ans)
             if number == 10:
+                self.cnt_ans()
                 if (self.check_ans()):
                     print(self.answer)
             self.fill(number+1)
 
     def cnt_ans(self):
+        self.cntA = 0
+        self.cntB = 0
+        self.cntC = 0
+        self.cntD = 0
         for ans in self.answer:
             if ans == 'A':
                 self.cntA += 1
@@ -30,8 +35,8 @@ class Answers():
                 self.cntC += 1
             else:
                 self.cntD += 1
-        self.minCnt = min(cntA, min(cntB, min(cntC, cntD)))
-        self.maxCnt = max(cntA, max(cntB, max(cntC, cntD)))
+        self.minCnt = min(self.cntA, min(self.cntB, min(self.cntC, self.cntD)))
+        self.maxCnt = max(self.cntA, max(self.cntB, max(self.cntC, self.cntD)))
     
     def check_ans(self):
         if (self.check2() == False): return False
@@ -52,7 +57,7 @@ class Answers():
             return self.answer[4]=='D'
         elif self.answer[1]=='C': 
             return self.answer[4]=='A'
-        else 
+        else:
             return self.answer[4]=='B'
     
     def check3(self):
